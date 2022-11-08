@@ -21,8 +21,8 @@ def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
     #subscribe to topics of interest here
-    client.subscribe("jaleb/led") #subscribe to LED channel
-    client.message_callback_add("jaleb/led", ledCallback)
+    client.subscribe("MQTT_Adv/led") #subscribe to LED channel
+    client.message_callback_add("MQTT_Adv/led", ledCallback)
 
 def ledCallback(client, userdata, msg):
     new_msg = str(msg.payload, "utf-8")
@@ -49,6 +49,6 @@ if __name__ == '__main__':
 
     while True:
         with lock:
-            if():
-                client.publish("jaleb/button", "Button pressed!")
+            if(button.is_pressed):
+                client.publish("MQTT_Adv/button", "Button pressed!")
         time.sleep(1)

@@ -21,16 +21,12 @@ def on_press(key):
     
     if k == 'o':
         print("o")
-        #send "f" character to rpi
-        client.publish("jaleb/lcd", "w")
         # send "LED_ON"
-        client.publish("jaleb/led", "LED_ON")
+        client.publish("MQTT_Adv/led", "LED_ON")
     elif k == 'f':
         print("f")
-        # send "f" character to rpi
-        client.publish("jaleb/lcd", "f")
         # send "LED_OFF"
-        client.publish("jaleb/led", "LED_OFF")
+        client.publish("MQTT_Adv/led", "LED_OFF")
         
 
 if __name__ == '__main__':

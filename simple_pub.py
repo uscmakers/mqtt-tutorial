@@ -6,7 +6,7 @@ import time
 pub_client = mqtt.Client()
 
 # connect it to the mqtt broker
-pub_client.connect(host="eclipse.usc.edu", port=11000, keepalive=60)
+pub_client.connect("test.mosquitto.org", 1883, 60)
 
 # start
 pub_client.loop_start()
@@ -15,6 +15,6 @@ pub_client.loop_start()
 while (True):
 	print("publishing...")
 	# publish 1.23 to my topic
-	pub_client.publish("lilly/topic1", 1.23)
+	pub_client.publish("MQTT_Simple/topic", 1.23)
 	time.sleep(3)
 
