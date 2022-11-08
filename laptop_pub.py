@@ -31,8 +31,8 @@ def on_press(key):
 
 if __name__ == '__main__':
     #setup the keyboard event listener
-    lis = keyboard.Listener(on_press=on_press)
-    lis.start() # start to listen on a separate thread
+    # lis = keyboard.Listener(on_press=on_press)
+    # lis.start() # start to listen on a separate thread
 
     client = mqtt.Client()
     client.on_message = on_message
@@ -41,6 +41,17 @@ if __name__ == '__main__':
     client.connect("test.mosquitto.org", 1883, 60)
     client.loop_start()
 
+
     while True:
+        with lock:
+            x = input("Type 'o' to turn LED on & type 'f' to turn LED off")
+            if x == 'o':
+                print("o")
+                # send "LED_ON"
+                client.publish("MQTT_Adv/led", "LED_ON")
+            elif x == 'f':
+                print("f")
+                # send "LED_OFF"
+                client.publish("MQTT_Adv/led", "LED_OFF")
         time.sleep(1)
-            
+
