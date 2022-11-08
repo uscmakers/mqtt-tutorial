@@ -4,6 +4,9 @@ Run vm_publisher.py in a separate terminal on your laptop."""
 
 import paho.mqtt.client as mqtt
 import time
+import threading
+
+lock = threading.Lock()
 #from pynput import keyboard
 
 def on_connect(client, userdata, flags, rc):
